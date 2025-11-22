@@ -18,6 +18,26 @@ use clap::Parser;
 mod serial;
 mod ui;
 
+#[derive(Debug, Clone, Copy)]
+pub enum Parity {
+    None,
+    Odd,
+    Even,
+}
+
+impl std::str::FromStr for Parity {
+    type Err = String;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s.to_lowercase().as_str() {
+            "none" => Ok(Parity::None),
+            "odd" => Ok(Parity::Odd),
+            "even" => Ok(Parity::Even),
+            _ => Err(format!("Invalid parity: {}. Must be 'none', 'odd', or 'even'", s)),
+        }
+    }
+}
+
 #[derive(Parser, Debug)]
 #[command(name = "scat")]
 #[command(about = "Serial CAT - A cross-platform CLI serial port tool for hardware developers", long_about = None)]
@@ -38,6 +58,10 @@ struct Args {
     #[arg(long, default_value = "1")]
     stop_bits: u8,
 
+    /// Parity (none, odd, even)
+    #[arg(long, default_value = "none")]
+    parity: Parity,
+
     /// List available serial ports
     #[arg(short, long)]
     list: bool,
@@ -55,7 +79,7 @@ fn main() -> Result<()> {
         anyhow::anyhow!("No port specified. Use 'scat --list' to see available ports or provide port as argument.")
     })?;
 
-    ui::run(&port, args.baud, args.data_bits, args.stop_bits)?;
+    ui::run(&port, args.baud, args.data_bits, args.stop_bits, args.parity)?;
 
     Ok(())
 }

@@ -14,9 +14,10 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ## Phase 1: MVP - Core Serial Communication
 
 ### Step 1.1: Project Setup & Dependencies
+
 - [x] Initialize Cargo project
-- [ ] Add dependencies: `serialport`, `clap`, `anyhow`
-- [ ] Create basic project structure:
+- [x] Add dependencies: `serialport`, `clap`, `anyhow`
+- [x] Create basic project structure:
   - `src/main.rs` - CLI entry point
   - `src/serial.rs` - Serial port communication
   - `src/ui.rs` - Terminal UI components
@@ -26,6 +27,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ---
 
 ### Step 1.2: CLI Argument Parsing
+
 - [ ] Implement CLI argument handling using `clap` for:
   - Port selection (e.g., `/dev/ttyUSB0`, `COM3`)
   - Baud rate (default 115200, configurable)
@@ -35,21 +37,25 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 - [ ] Add `--help` and `--version` support
 - [ ] Add config file support (optional in MVP)
 
-**Expected Output**: `scat --help` shows all options; `scat /dev/ttyUSB0 -b 115200` parses correctly
+**Expected Output**: `scat --help` shows all options;
+`scat /dev/ttyUSB0 -b 115200` parses correctly
 
 ---
 
 ### Step 1.3: Basic Serial Port Opening & Closure
+
 - [ ] Implement `SerialPort` struct to wrap serialport crate
 - [ ] Handle port opening with proper error messages
 - [ ] Graceful shutdown (Ctrl+C handling)
 - [ ] Test on actual hardware or virtual serial port
 
-**Expected Output**: Program opens/closes ports cleanly; informative error if port not found
+**Expected Output**: Program opens/closes ports cleanly;
+informative error if port not found
 
 ---
 
 ### Step 1.4: Read from Serial Port
+
 - [ ] Spawn background thread to read from serial port
 - [ ] Display incoming data to stdout
 - [ ] Handle disconnections gracefully
@@ -60,6 +66,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ---
 
 ### Step 1.5: Write to Serial Port
+
 - [ ] Read user input from stdin
 - [ ] Send input to serial port
 - [ ] Handle line endings (LF, CR, CRLF - configurable)
@@ -72,6 +79,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ## Phase 2: Enhanced UX & Features
 
 ### Step 2.1: Status Bar / Info Display
+
 - [ ] Show port name, baud rate, connection status
 - [ ] Display connected/disconnected state with visual indicator
 - [ ] Show data statistics (bytes sent/received)
@@ -81,6 +89,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ---
 
 ### Step 2.2: Local Echo & Line Control
+
 - [ ] Toggle local echo on/off
 - [ ] Configurable line endings on send
 - [ ] Show/hide sent characters
@@ -91,6 +100,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ---
 
 ### Step 2.3: Hexdump / Raw View Modes
+
 - [ ] Toggle between plain text and hexdump view
 - [ ] Show both ASCII and hex simultaneously
 - [ ] Color-code received vs sent data
@@ -101,6 +111,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ---
 
 ### Step 2.4: Reconnection Logic
+
 - [ ] Auto-detect port disconnection
 - [ ] Retry connection with exponential backoff
 - [ ] Notify user of reconnection attempts
@@ -113,6 +124,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ## Phase 3: Developer Quality of Life
 
 ### Step 3.1: Logging / Session Recording
+
 - [ ] Save session to file (optional)
 - [ ] Log only output, or both input & output
 - [ ] Rotating logs or single-session logs
@@ -123,6 +135,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ---
 
 ### Step 3.2: Macro / Shortcut Commands
+
 - [ ] Define quick commands in config file
 - [ ] Hotkeys to send predefined strings
 - [ ] Environment variable expansion
@@ -133,6 +146,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ---
 
 ### Step 3.3: Search & Filtering
+
 - [ ] Search/grep received data in real-time
 - [ ] Highlight matching lines
 - [ ] Filter to show only matching lines
@@ -143,6 +157,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ---
 
 ### Step 3.4: Port Discovery / Auto-Connect
+
 - [ ] List available serial ports with info
 - [ ] Show USB VID:PID for identification
 - [ ] Auto-connect to known device
@@ -155,18 +170,21 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ## Good-to-Have Features
 
 ### Performance & Stability
+
 - [ ] Handle high baud rates (>1MHz) without data loss
 - [ ] Buffered read/write for performance
 - [ ] Configurable buffer sizes
 - [ ] Memory usage monitoring
 
 ### Terminal Features
+
 - [ ] Custom color schemes / themes
 - [ ] Configurable key bindings
 - [ ] Vi-mode and Emacs-mode support
 - [ ] Mouse support for selection/scrolling
 
 ### Advanced Serial Features
+
 - [ ] RTS/CTS flow control toggle
 - [ ] DTR/DSR line control
 - [ ] XON/XOFF software flow control
@@ -174,12 +192,14 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 - [ ] Serial line state monitoring (CD, RI, etc.)
 
 ### Cross-Platform Enhancements
+
 - [ ] Native Windows console color support
 - [ ] Linux TTY/PTY handling
 - [ ] macOS specific optimizations
 - [ ] USB CDC device detection
 
 ### Developer Convenience
+
 - [ ] YAML config file support
 - [ ] Multiple saved profiles (per device)
 - [ ] Integration with common dev boards (Arduino, ESP32 presets)
@@ -187,6 +207,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 - [ ] Integration with tmux/screen
 
 ### Documentation & UX
+
 - [ ] Built-in man page
 - [ ] Interactive tutorial on first run
 - [ ] Command cheat-sheet
@@ -194,6 +215,7 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 - [ ] Accessibility features (high contrast mode)
 
 ### Testing & Validation
+
 - [ ] Unit tests for serial communication
 - [ ] Integration tests with virtual serial ports
 - [ ] Stress tests for data integrity
@@ -204,17 +226,20 @@ A cross-platform CLI serial port tool for hardware developers. Similar to tio, f
 ## Technical Decisions
 
 ### Libraries
+
 - **Serial Communication**: `serialport` crate (cross-platform, well-maintained)
 - **CLI Args**: `clap` (ergonomic, generates help automatically)
 - **TUI**: Consider `crossterm` or `termion` for terminal control if adding advanced UI
 - **Error Handling**: `anyhow` for error propagation
 
 ### Architecture
+
 - Single-threaded main with read/write on separate OS-level threads
 - Event-based model for commands (Ctrl+C, etc.)
 - Modular design for easy feature addition
 
 ### Testing Strategy
+
 - Test with real USB-UART adapters (CH340, FT232)
 - Test with virtual serial ports (socat on Linux)
 - Verify on Linux (Fedora/Ubuntu), macOS, Windows

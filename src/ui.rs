@@ -21,8 +21,9 @@ use std::sync::{Arc, mpsc};
 use std::time::Duration;
 
 use crate::serial;
+use crate::Parity;
 
-pub fn run(port_name: &str, baud_rate: u32, data_bits: u8, stop_bits: u8) -> Result<()> {
+pub fn run(port_name: &str, baud_rate: u32, data_bits: u8, stop_bits: u8, parity: Parity) -> Result<()> {
     // Setup terminal
     enable_raw_mode()?;
     let mut stdout = io::stdout();
