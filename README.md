@@ -71,8 +71,8 @@ Currently in MVP development phase (Phase 1).
 
 ## License
 
-MIT
+Apache License 2.0 - See [LICENSE](LICENSE) file for details.
 
 ## Author
 
-Hardware Developer
+Sergey Golovin <golovinengineer@icloud.com>
