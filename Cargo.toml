@@ -2,9 +2,10 @@
 name = "scat"
 version = "0.1.0"
 edition = "2021"
-authors = ["Hardware Developer"]
+authors = ["Sergey Golovin <golovinengineer@icloud.com>"]
 description = "Serial CAT - A cross-platform CLI tool for serial port communication"
 repository = "https://github.com/yourusername/scat"
+license = "Apache-2.0"
 
 [dependencies]
 serialport = "4.3"
